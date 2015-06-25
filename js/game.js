@@ -13,7 +13,14 @@ game.controller('mainController', ['$scope', '$http', function($scope, $http) {
      */
     $http.get('json/data.json').success(function(data) {
         $scope.products = data[0].products;
-        $scope.units = data[0].units[0];
+        
+        // Get units data (json format)
+        var obj = data[0].units[0];
+        
+        // Move json to Array();
+        units = new Array();
+        $.each(obj, function(key, value) { units.push(value) });
+        $scope.units = units; // Store it on $scope.units
     });
     $scope.total = {
         amount: 0,
@@ -77,10 +84,8 @@ game.controller('mainController', ['$scope', '$http', function($scope, $http) {
                 // Add the profits of the sale
                 $scope.$apply(function() {
                     $scope.changeProfit('get', product.prices.sell);
+                    $scope.afterBuySell();
                 });
-                
-                // Things that have to happen after the sale
-                $scope.afterBuySell();
             });
         }
     };
@@ -89,16 +94,8 @@ game.controller('mainController', ['$scope', '$http', function($scope, $http) {
      * @since   06-25-2015
      */
     $scope.changeProfit = function(type, price) {
-    
-        var obj = $scope.units;
-
-        units = new Array();
-        $.each(obj, function(key, value) { 
-          units.push(value);
-        });
-    
-        amountLevel = units.indexOf(price.unit);
-        totalLevel = units.indexOf($scope.total.unit);
+        amountLevel = $scope.units.indexOf(price.unit);
+        totalLevel = $scope.units.indexOf($scope.total.unit);
     
         // If the sell amount and the total amount are in the same level
         // with can sum them as it.
@@ -137,11 +134,11 @@ game.controller('mainController', ['$scope', '$http', function($scope, $http) {
         // then: increase the unit level to the next;
         if ($scope.total.amount > 999) {
             $scope.total.amount = $scope.total.amount / 1000;
-            $scope.total.unit = units[totalLevel + 1];
+            $scope.total.unit = $scope.units[totalLevel + 1];
         } else if ($scope.total.amount < 1) {
             if ((totalLevel - 1) >= 0) {
                 $scope.total.amount = $scope.total.amount * 1000;
-                $scope.total.unit = units[totalLevel - 1];
+                $scope.total.unit = $scope.units[totalLevel - 1];
             }
         }
     };
@@ -152,8 +149,8 @@ game.controller('mainController', ['$scope', '$http', function($scope, $http) {
     $scope.buy = function(Id) {
         var product = $scope.products[Id];
         
-        buyLevel = units.indexOf(product.prices.buy.unit);
-        totalLevel = units.indexOf($scope.total.unit);
+        buyLevel = $scope.units.indexOf(product.prices.buy.unit);
+        totalLevel = $scope.units.indexOf($scope.total.unit);
         
         // Know if there is enough money to buy
         if (totalLevel >= buyLevel) {
@@ -199,8 +196,8 @@ game.controller('mainController', ['$scope', '$http', function($scope, $http) {
         $scope.products[Id].prices.buy.amount = (newBuyPrice);
         $scope.products[Id].prices.sell.amount = (newSellPrice);
         
-        buyLevel = units.indexOf($scope.products[Id].prices.buy.unit);
-        sellLevel = units.indexOf($scope.products[Id].prices.sell.unit);
+        buyLevel = $scope.units.indexOf($scope.products[Id].prices.buy.unit);
+        sellLevel = $scope.units.indexOf($scope.products[Id].prices.sell.unit);
         
         if ($scope.products[Id].prices.buy.amount > 999) {
             $scope.products[Id].prices.buy.amount /= 1000;
@@ -220,8 +217,8 @@ game.controller('mainController', ['$scope', '$http', function($scope, $http) {
         for (i = 0; i < $scope.products.length; i++) {
             product = $scope.products[i];
             
-            buyLevel = units.indexOf(product.prices.buy.unit);
-            totalLevel = units.indexOf($scope.total.unit);
+            buyLevel = $scope.units.indexOf(product.prices.buy.unit);
+            totalLevel = $scope.units.indexOf($scope.total.unit);
             
             // Allow buy only if there is enough money (in the total)
             if (totalLevel >= buyLevel) {
@@ -230,13 +227,7 @@ game.controller('mainController', ['$scope', '$http', function($scope, $http) {
                 ableToBuy1 = ($scope.total.amount - product.prices.buy.amount >= 0) && (totalLevel == buyLevel);
                 ableToBuy2 = (totalLevel > buyLevel);
                 
-                if (ableToBuy1 || ableToBuy2) {
-                    $scope.$apply(function() {
-                        product.buyButton = "success";
-                    });
-                } else {
-                    product.buyButton = "default";
-                }
+                product.buyButton = (ableToBuy1 || ableToBuy2) ? "success" : "default";
             } else {
                 product.buyButton = "default";
             }
