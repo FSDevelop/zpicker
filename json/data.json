@@ -1,0 +1,140 @@
+[
+    {
+        "products": [
+            {
+                "sellingProcess": false,
+                "prices": {
+                    "sell": {
+                        "amount": 20,
+                        "unit": ""
+                    },
+                    "buy": {
+                        "amount": 10,
+                        "unit": ""
+                    }
+                },
+                "multipliers": {
+                    "sell": 1.09, 
+                    "buy": 1.07
+                },
+                "quantity": 1,
+                "speed": 5000,
+                "buyButton": "default",
+                "canSell": ""
+            },
+            {
+                "sellingProcess": false,
+                "prices": {
+                    "sell": {
+                        "amount": 180,
+                        "unit": ""
+                    },
+                    "buy": {
+                        "amount": 120,
+                        "unit": ""
+                    }
+                },
+                "multipliers": {
+                    "sell": 1.09, 
+                    "buy": 1.07
+                },
+                "quantity": 0,
+                "speed": 10000,
+                "buyButton": "default",
+                "canSell": "cannotSell"
+            },
+            {
+                "sellingProcess": false,
+                "prices": {
+                    "sell": {
+                        "amount": 1.62,
+                        "unit": "thousand"
+                    },
+                    "buy": {
+                        "amount": 1.44,
+                        "unit": "thousand"
+                    }
+                },
+                "multipliers": {
+                    "sell": 1.09, 
+                    "buy": 1.07
+                },
+                "quantity": 0,
+                "speed": 20000,
+                "buyButton": "default",
+                "canSell": "cannotSell"
+            },
+            {
+                "sellingProcess": false,
+                "prices": {
+                    "sell": {
+                        "amount": 14.58,
+                        "unit": "thousand"
+                    },
+                    "buy": {
+                        "amount": 17.280,
+                        "unit": "thousand"
+                    }
+                },
+                "multipliers": {
+                    "sell": 1.09, 
+                    "buy": 1.07
+                },
+                "quantity": 0,
+                "speed": 40000,
+                "buyButton": "default",
+                "canSell": "cannotSell"
+            },
+            {
+                "sellingProcess": false,
+                "prices": {
+                    "sell": {
+                        "amount": 131.22,
+                        "unit": "thousand"
+                    },
+                    "buy": {
+                        "amount": 207.360,
+                        "unit": "thousand"
+                    }
+                },
+                "multipliers": {
+                    "sell": 1.09, 
+                    "buy": 1.07
+                },
+                "quantity": 0,
+                "speed": 80000,
+                "buyButton": "default",
+                "canSell": "cannotSell"
+            },
+            {
+                "sellingProcess": false,
+                "prices": {
+                    "sell": {
+                        "amount": 1.18,
+                        "unit": "million"
+                    },
+                    "buy": {
+                        "amount": 2.48,
+                        "unit": "million"
+                    }
+                },
+                "multipliers": {
+                    "sell": 1.09, 
+                    "buy": 1.07
+                },
+                "quantity": 0,
+                "speed": 16000,
+                "buyButton": "default",
+                "canSell": "cannotSell"
+            }        
+        ],
+        "units": [{
+            "0": "",
+            "1": "thousand",
+            "2": "million",
+            "3": "billion",
+            "4": "trillion",
+            "5": "quadrillion"
+        }]
+    }
+]

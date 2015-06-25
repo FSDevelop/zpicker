@@ -1,0 +1,66 @@
+body {
+    background-color: #999;
+}
+.game {
+    margin: 0 auto;
+    margin-top: 30px;
+    float: none;
+    background-color: #fff;
+    padding: 20px;
+    padding-bottom: 1px;
+    border-radius: 5px;
+}
+.game .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+.game tr:first-child h4,
+.game tr:first-child h5 {
+    padding-left: 10px;
+}
+.products .progress {
+    position: relative;
+    margin-bottom: 0;
+    height: 55px;
+    cursor: pointer;
+    margin-top: 1px;
+    background-color: #ccc;
+}
+.products .progress.cannotSell {
+    cursor: default;
+    background-color: #f3f3f3;
+}
+.products .progress .earnings {
+    position: absolute;
+    width: 100%;
+    margin-bottom: 0;
+    text-align: center;
+    padding-top: 16px;
+    font-weight: bold;
+}
+.products .progress .my-progress-bar {
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 55px;
+    background-color: #20A45e;
+}
+.products .quantity {
+    padding-top: 17px
+}
+.products .btn.buy {
+    width: 100%;
+}
+.products .btn.buy.btn-default {
+    cursor: default;
+}
+.products .btn.buy.btn-default:hover {
+    background-color: #fff;
+}
+.products .btn.buy > div {
+    font-weight: bold;
+    font-size: 16px;
+}
+.products .btn.buy > span {
+    font-size: 11px;
+}

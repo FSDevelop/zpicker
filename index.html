@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ZPicker">
+<head>
+    <title>ZPicker</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/game.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/reset.css" />
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="css/game.css" />
+</head>
+<body ng-controller="mainController">
+    <div class="row">
+        <div class="col-lg-8 game">
+            <table class="table table-bordered products">
+                <tr>
+                    <td>
+                        <h4><strong>ZPicker</strong></h4>
+                    </td>
+                    <td>
+                        <h5>
+                            <strong>Total money:</strong>
+                            ${{total.amount | number:2}}
+                            {{total.unit}}
+                        </h5>
+                    </td>
+                </tr>
+                <tr ng-repeat="product in products">
+                    <td colspan="2">
+                        <div class="row">
+                            <label class="col-sm-2 quantity text-center">Quantity: {{product.quantity}}</label>
+                            <div class="col-lg-6">
+                                <div class="progress {{product.canSell}}" ng-click="sell($index)">
+                                    <div class="my-progress-bar" id="progress_{{$index}}"></div>
+                                    <div class="earnings">
+                                        ${{product.prices.sell.amount | number:2}}
+                                        {{product.prices.sell.unit}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="btn btn-{{product.buyButton}} buy" ng-click="buy($index)">
+                                    <div>Comprar</div>
+                                    <span>
+                                        <strong>Price:</strong> 
+                                        ${{product.prices.buy.amount | number:2}}
+                                        {{product.prices.buy.unit}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
