@@ -23,7 +23,7 @@
                     <td>
                         <h5>
                             <strong>Total money:</strong>
-                            ${{total.amount | number:2}}
+                            {{total.amount | currency}}
                             {{total.unit}}
                         </h5>
                     </td>
@@ -36,7 +36,7 @@
                                 <div class="progress {{product.canSell}}" ng-click="sell($index)">
                                     <div class="my-progress-bar" id="progress_{{$index}}"></div>
                                     <div class="earnings">
-                                        ${{product.prices.sell.amount | number:2}}
+                                        {{product.prices.sell.amount | currency}}
                                         {{product.prices.sell.unit}}
                                     </div>
                                 </div>
@@ -46,7 +46,7 @@
                                     <div>Comprar</div>
                                     <span>
                                         <strong>Price:</strong> 
-                                        ${{product.prices.buy.amount | number:2}}
+                                        {{product.prices.buy.amount | currency}}
                                         {{product.prices.buy.unit}}
                                     </span>
                                 </div>
