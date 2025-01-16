@@ -10,3 +10,9 @@ El juego es sencillo: simula ser un comercio que compra y venta. El objetivo es 
 Se vende haciendo click sobre el progress bar. Los botones de compra se habilitan cuando hay dinero suficiente (y viceversa). Los valores de compra, venta y total se transforman al llegar a 1000 en una nueva unidad (mil, millones, billones, etc.) o bajan de unidad al ser inferiores a 1.
 
 A determinada cantidad de stock se incrementa la velocidad de venta del producto, se incrementa el precio de compra, se reduce el de venta, y los multiplicadores se van reduciendo a medida que se avanza, para que sea cada vez más dificil y que el crecimiento no sea 100% exponencial.
+
+# Instructions
+
+- npm i
+- node index.js
+- ready in http://localhost:3000/
